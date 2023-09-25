@@ -73,7 +73,7 @@ export default function Page(){
                 <button className="w-full rounded-md py-4 mb-8 bg-black text-sm font-bold text-main">Join</button>
                 <div className="guide-signin text-sm flex justify-between">
                     <p>Do you have an account already?</p>
-                    <Link className="text-blue-500" to="/">Login</Link>
+                    <Link className="text-black underline" to="/">Login</Link>
                 </div>
             </section>
         </main>
