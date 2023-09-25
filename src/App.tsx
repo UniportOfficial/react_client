@@ -4,16 +4,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // pages
 import Main from './pages/main';
 import Signin from './pages/signin';
-import Signup from './pages/signup';
-import Register from './pages/register';
+import Signup from './pages/entry/signup';
+import Register from './pages/entry/register';
+
+import LoadingPage from './components/LoadingPage';
 
 function App() {
+  const [language, setLanguage] = useState('');
   const [isLogin, setLogin] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   return (
     <>
       {!isLogin ? 
         <BrowserRouter>
+          {isLoading? <LoadingPage/> : <></>}
           <Routes>
             <Route path='/' element={<Signin/>}/>
             <Route path='/signup' element={<Signup/>}/>

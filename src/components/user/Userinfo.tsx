@@ -11,6 +11,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Userinfo(){
+    const [isFirst, setIsFirst] = useState(true);
+    const [accepted, setAccepted] = useState(false);
+
     return (
         <Swiper
             className="h-screen w-screen"
@@ -45,7 +48,7 @@ export default function Userinfo(){
             <SwiperSlide>
                 <div className="w-full h-full px-12 relative flex flex-col justify-center items-center text-slate-400">
                     <p className="">Uniting the World, Embracing Korea</p>
-                    <p className="mb-3">:Where Diversity Finds Joy</p>
+                    <p className="mb-3">Where Diversity Finds Joy</p>
                     <p className="">We help foreigners</p>
                     <p className="mb-3">get the best experience in Korea</p>
                     <p className="mb-3">Want to learn more about uni-port?</p>

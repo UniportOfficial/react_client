@@ -21,11 +21,6 @@ export default function Page(){
 
     return (
         <main>
-            <section>
-                <div className="logo-container">
-                    <img src="logo.png"/>
-                </div>
-            </section>
             <section className="px-8 mb-8">
                 <h1 className="text-2xl font-bold text-center py-8">Sign up</h1>
                 <Input 
@@ -33,20 +28,8 @@ export default function Page(){
                     placeholder="E-mail"
                     inputHandler={inputHandler(setEmail)}
                 >
-                    <button className="border-black border rounded-md px-4 text-xs">Verify</button>
+                    <button className="bg-teritary border-black border rounded-md px-4 text-xs text-white font-semibold ">Verify</button>
                 </Input>
-                <Input 
-                    value={firstname}
-                    placeholder="First name"
-                    notice="Please enter your first name on your passport/ID card"
-                    inputHandler={inputHandler(setFirstname)}
-                />
-                <Input 
-                    value={lastname}
-                    placeholder="Last name"
-                    notice="Please enter your last name on your passport/ID card"
-                    inputHandler={inputHandler(setLastname)}
-                />
                 <Input 
                     value={password}
                     placeholder="Password"
@@ -58,6 +41,16 @@ export default function Page(){
                     placeholder="Confirm Password"
                     inputHandler={inputHandler(setPasswordToConfirm)}
                     type="password"
+                />
+                <Input 
+                    value={firstname}
+                    placeholder="First name"
+                    inputHandler={inputHandler(setFirstname)}
+                />
+                <Input 
+                    value={lastname}
+                    placeholder="Last name"
+                    inputHandler={inputHandler(setLastname)}
                 />
                 <div className="textarea-group mb-8">
                     <h2 className="notice-title mb-2 text-xs">Terms and Conditions</h2>
@@ -77,7 +70,7 @@ export default function Page(){
                         I have read and agree to the Privacy Policy.
                     </label>
                 </div>
-                <button className="w-full rounded-md py-4 mb-8 bg-blue-700 text-sm text-white">Join</button>
+                <button className="w-full rounded-md py-4 mb-8 bg-black text-sm font-bold text-main">Join</button>
                 <div className="guide-signin text-sm flex justify-between">
                     <p>Do you have an account already?</p>
                     <Link className="text-blue-500" to="/">Login</Link>
@@ -103,7 +96,7 @@ function Input(
         <div className="relative mb-8">
             <div className="input-group flex justify-between gap-x-2 h-[40px]">
                 <input
-                    className="border-black border px-6 py-2 rounded-md w-full text-xs" 
+                    className="bg-secondary px-6 py-2 rounded-md w-full text-xs" 
                     placeholder={placeholder}
                     value={value}
                     onChange={inputHandler}
