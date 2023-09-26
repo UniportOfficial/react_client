@@ -11,22 +11,27 @@ import LoadingPage from './components/LoadingPage';
 
 function App() {
   const [language, setLanguage] = useState('');
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState(true);
+  const [isFirst, setFirst] = useState(true);
   const [isLoading, setLoading] = useState(false);
 
   return (
     <>
-      {!isLogin ? 
+      {!isLogin && 
         <BrowserRouter>
-          {isLoading? <LoadingPage/> : <></>}
+          {isLoading && <LoadingPage/>}
           <Routes>
             <Route path='/' element={<Signin/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/register' element={<Register/>}/>
           </Routes>
         </BrowserRouter>
-        : 
+      }
+      {isLogin && isFirst ?
+        <Register/>
+        :
         <BrowserRouter>
+          {isLoading && <LoadingPage/>}
           <Routes>
             <Route path='/' element={<Main/>}/>
           </Routes>

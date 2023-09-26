@@ -1,3 +1,19 @@
 select {
     appearance: none;
 }
+
+.swiper .swiper-pagination {
+    position: static;
+    justify-content: center;
+}
+
+.swiper .swiper-pagination .swiper-pagination-bullet {
+    background-color: #fff;
+    width: 20px;
+    border-radius: 2rem;
+    margin: 1px;
+}
+
+.swiper .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #F8D57A;
+}

@@ -6,7 +6,7 @@ import UserInfo from '../../components/user/Userinfo';
 
 export default function Register(){
     return (
-        <main>
+        <main className="w-full">
             <UserInfo></UserInfo>
         </main>
     )

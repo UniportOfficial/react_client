@@ -10,13 +10,16 @@ import 'swiper/css/pagination';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
+// Countries Data
+// import * as countries from './country.json';
+const countries = require('./country.json')
+
 export default function Userinfo(){
-    const [isFirst, setIsFirst] = useState(true);
     const [accepted, setAccepted] = useState(false);
 
     return (
         <Swiper
-            className="h-screen w-screen"
+            className="h-screen"
             pagination={{
                 el:".swiper-pagination"
             }}
@@ -26,7 +29,13 @@ export default function Userinfo(){
             }}
             modules={[Pagination, Navigation]}
         >
-            <div className="swiper-pagination"></div>
+            <div className="flex justify-center">
+                <div className="w-[90%] flex px-6 py-2 justify-between items-center absolute top-[5%] rounded-lg bg-black text-white">
+                    <PrevButton></PrevButton>
+                    <div className="swiper-pagination flex items-center static"></div>
+                    <button className="text-xs font-semibold">Skip</button>
+                </div>
+            </div>
             <SwiperSlide>
                 <InnerSlide
                     guide="What is your full name?"
@@ -54,7 +63,6 @@ export default function Userinfo(){
                     <p className="mb-3">Want to learn more about uni-port?</p>
                 </div>
             </SwiperSlide>
-            <PrevButton></PrevButton>
             <NextButton></NextButton>
         </Swiper>
     )
@@ -77,9 +85,6 @@ function InnerSlide({guide, placeholder, type}:{guide: string, placeholder: stri
 }
 
 function InnerSlideSelect({guide, placeholder}:{guide: string, placeholder: string}){
-    // Countries Data
-    const countries = require(`/${process.env.PUBLIC_URL}/country.json`);
-
     return(
         <div className="w-full h-full px-12 relative flex flex-col justify-center items-center">
             <div className="w-full">
@@ -103,8 +108,8 @@ function InnerSlideSelect({guide, placeholder}:{guide: string, placeholder: stri
 
 function PrevButton(){
     return(
-        <div className="navigation-prev absolute top-[2%] left-12 z-10">
-            <button><FontAwesomeIcon icon={faArrowLeft}/></button>
+        <div className="navigation-prev z-10">
+            <button className="text-white"><FontAwesomeIcon icon={faArrowLeft}/></button>
         </div>
     )
 }
@@ -112,7 +117,7 @@ function PrevButton(){
 function NextButton(){
     return (
         <div className="navigation-next absolute bottom-[5%] right-12 z-10">
-            <button>Next</button>
+        <button>Next</button>
         </div>
     )
 }
