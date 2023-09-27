@@ -17,7 +17,7 @@ import LoadingPage from './components/LoadingPage';
 function App() {
   const [language, setLanguage] = useState('');
   const [isLogin, setLogin] = useState(false);
-  const [isFirst, setFirst] = useState(true);
+  const [isFirst, setFirst] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
   const setStateLogin = ()=>{
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {!isLogin && 
+      {isLogin && 
         <>
           {isLoading && <LoadingPage/>}
           <Routes>

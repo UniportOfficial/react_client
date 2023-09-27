@@ -1,22 +1,33 @@
-import { useState } from 'react';
+import { HTMLAttributes, ReactHTMLElement, ReactNode, useState } from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import './userinfo.css';
 
 // Swiper Library
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/pagination';
 
+// Calendar Library
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
 // fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+import './userinfo.css';
 
 // Countries Data
 // import * as countries from './country.json';
 const countries = require('./country.json')
 
+
+
 export default function Userinfo(){
     const [accepted, setAccepted] = useState(false);
 
+    return <Survey/>
+}
+
+function Survey(){
     return (
         <Swiper
             className="h-screen"
@@ -37,58 +48,153 @@ export default function Userinfo(){
                 </div>
             </div>
             <SwiperSlide>
-                <InnerSlide
-                    guide="What is your full name?"
-                    placeholder='Please enter your name.'
+                <SlideCalendar
+                    guide={
+                        <div className="w-full text-lg font-bold text-center mb-6">
+                            <p>Please enter your</p>
+                            <p className="text-main">Date of Birth</p>
+                        </div>
+                    }
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <InnerSlideSelect
-                    guide="Where are you from?"
-                    placeholder='Please select your country'
+                <SlideSelect
+                    guide={
+                        <div className="w-full text-lg font-bold text-center">
+                            <p className="mb-4">Please select your <span className='text-main'>Nationality</span></p>
+                            <p className="text-sm mb-4">
+Please select the nationality shown 
+in your passport, or select "Not listed" 
+if you can't find your nationality 
+within the listed options.
+                            </p>
+                        </div>
+                    }
+                    placeholder='Select your Nationality'
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <div className="w-full h-full px-12 relative flex flex-col justify-center items-center text-slate-400">
-                    <p className="mb-3">유니포트에 오신걸 환영합니다!</p>
-                    <p>Welcome to Uni-port!</p>
-                </div>
+                <SlideCustom
+                    guide={
+                        <div>
+                            <div className="w-full text-lg font-bold text-center mb-4">
+                                <p>Please enter</p>
+                                <p>your <span className="text-main">Passport Number</span></p>
+                            </div>
+                            <div className="w-full text-sm text-center mb-4">
+                                <p>
+Please note that the information you fill in 
+needs to be the same as the information 
+in your passport.
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    placeholder="9 characters Passport Number"
+                />
             </SwiperSlide>
             <SwiperSlide>
-                <div className="w-full h-full px-12 relative flex flex-col justify-center items-center text-slate-400">
-                    <p className="">Uniting the World, Embracing Korea</p>
-                    <p className="mb-3">Where Diversity Finds Joy</p>
-                    <p className="">We help foreigners</p>
-                    <p className="mb-3">get the best experience in Korea</p>
-                    <p className="mb-3">Want to learn more about uni-port?</p>
-                </div>
+                <SlideCalendar
+                    guide={
+                        <div className="w-full text-lg font-bold text-center mb-6">
+                            <p>Please enter your</p>
+                            <p><span className="text-main">Date of Issue </span>of your passport</p>
+                        </div>
+                    }
+                />
+            </SwiperSlide>
+            <SwiperSlide>
+                <SlideCalendar
+                    guide={
+                        <div className="w-full text-lg font-bold text-center mb-6">
+                            <p>Please enter your</p>
+                            <p><span className="text-main">Date of Expiry </span>of your passport</p>
+                        </div>
+                    }
+                />
+            </SwiperSlide>
+            <SwiperSlide>
+                <SlideCustom
+                    guide={
+                        <div className="mb-6">
+                            <div className="w-full text-lg font-bold text-center mb-6">
+                                <p>Please enter your</p>
+                                <p>your <span className="text-main">valid Address in Korea</span></p>
+                            </div>
+                            <div className="text-sm text-center">
+                                <p>If you do not have a valid address in Korea yet, please enter “None”</p>
+                            </div>
+                        </div>
+                    }
+                    placeholder="Address in Korea"
+                />
+            </SwiperSlide>
+            <SwiperSlide>
+                <SlideCustom
+                    guide={
+                        <div className="mb-6">
+                            <div className="w-full text-lg font-bold text-center mb-6">
+                                <p>Please enter your</p>
+                                <p>your <span className="text-main">Date of Expiry</span>Cellphone Number</p>
+                            </div>
+                            <div className="text-sm text-center">
+                                <p>Please enter a valid cellphone number via which you can be contacted.</p>
+                            </div>
+                        </div>
+                    }
+                    placeholder="Address in Korea"
+                />
+            </SwiperSlide>
+            <SwiperSlide>
+                <SlideCustom
+                    guide={
+                        <div className="mb-6">
+                            <div className="w-full text-lg font-bold text-center mb-6">
+                                <p>Please enter your</p>
+                                <p><span className="text-main">Address in your Home Country </span></p>
+                            </div>
+                            <div className="text-sm text-center">
+                                <p>Please enter your address in English</p>
+                            </div>
+                        </div>
+                    }
+                    placeholder="Address in your Home Country"
+                />
             </SwiperSlide>
             <NextButton></NextButton>
         </Swiper>
     )
 }
 
-function InnerSlide({guide, placeholder, type}:{guide: string, placeholder: string, type?: string}){
+function SlideCustom({guide, placeholder, type}:{guide: ReactNode, placeholder: string, type?: string}){
     return (
         <div className="w-full h-full px-12 relative flex flex-col justify-center items-center">
+            {guide}
             <div className="w-full">
                 <input 
-                    className="w-full text-sm px-8 border rounded-lg py-4" 
+                    className="w-full text-sm px-8 border-black border-b-2 py-4" 
                     placeholder={placeholder}
                     type={type ? type : 'text'}
                 />
-                <span className="absolute top-[50%] right-[20%] -translate-y-[50%]"><FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></span>
             </div>
-            <p className="absolute top-[30%] text-lg text-slate-300">{guide}</p>
         </div>
     )
 }
 
-function InnerSlideSelect({guide, placeholder}:{guide: string, placeholder: string}){
+function SlideCalendar({guide}:{guide: ReactNode}){
+    return (
+        <div className="w-full h-full mt-32 relative flex flex-col items-center">
+            {guide}
+            <Calendar locale="en"/>
+        </div>
+    )
+}
+
+function SlideSelect({guide, placeholder}:{guide: ReactNode, placeholder: string}){
     return(
         <div className="w-full h-full px-12 relative flex flex-col justify-center items-center">
+            {guide}
             <div className="w-full">
-                <p className="absolute top-[42%] text-sm text-salte-300">{placeholder}</p>
                 <select
                     className="w-full text-sm px-8 border rounded-lg py-4" 
                     placeholder={placeholder}
@@ -99,9 +205,8 @@ function InnerSlideSelect({guide, placeholder}:{guide: string, placeholder: stri
                         )
                     })}
                 </select>
-                <span className="absolute top-[50%] right-[20%] -translate-y-[50%]"><FontAwesomeIcon icon={faArrowDown}></FontAwesomeIcon></span>
+                <span className="absolute right-[18%] mt-4"><FontAwesomeIcon icon={faArrowDown}></FontAwesomeIcon></span>
             </div>
-            <p className="absolute top-[30%] text-lg text-slate-300">{guide}</p>
         </div>
     )
 }
@@ -117,7 +222,7 @@ function PrevButton(){
 function NextButton(){
     return (
         <div className="navigation-next absolute bottom-[5%] right-12 z-10">
-        <button>Next</button>
+            <button>Next</button>
         </div>
     )
 }
