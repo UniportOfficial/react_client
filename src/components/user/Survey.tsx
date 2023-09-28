@@ -13,7 +13,7 @@ import 'react-calendar/dist/Calendar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-import './userinfo.css';
+import './survey.css';
 
 // Countries Data
 // import * as countries from './country.json';

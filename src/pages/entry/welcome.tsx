@@ -1,4 +1,5 @@
 import MainButton from "../../components/utils/buttons/MainButton";
+import MainLink from "../../components/utils/buttons/MainLink";
 
 export default function Welcome(){
     return(
@@ -11,7 +12,7 @@ export default function Welcome(){
                 <p>to get you started with <span className="font-bold">Uniport</span></p>
             </div>
             <div className="flex flex-col items-center">
-                <MainButton className="mb-2" text="Get Started"/>
+                <MainLink to="/term" className="mb-2" text="Get Started"/>
                 <small className="text-xs">I'll save that for another time.</small>
             </div>
         </main>

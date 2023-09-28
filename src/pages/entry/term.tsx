@@ -1,5 +1,7 @@
 import MainButton from "../../components/utils/buttons/MainButton";
+import MainLink from "../../components/utils/buttons/MainLink";
 import SecondaryButton from "../../components/utils/buttons/SecondaryButton";
+import SecondaryLink from "../../components/utils/buttons/SecondaryLink";
 
 export default function Term(){
     return (
@@ -18,8 +20,8 @@ Terms and ConditionsTerms and ConditionsTerms and ConditionsTerms and Conditions
                 </textarea>
             </div>
             <div className='flex justify-evenly'>
-                <SecondaryButton text="Decline"/>
-                <MainButton text="Accept"/>
+                <SecondaryLink to='/' text="Decline"/>
+                <MainLink to='/register' text="Accept"/>
             </div>
         </main>
     )

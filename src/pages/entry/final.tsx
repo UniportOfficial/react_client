@@ -1,5 +1,6 @@
-import MainButton from "../../components/utils/buttons/MainButton"
-import SecondaryButton from "../../components/utils/buttons/SecondaryButton"
+import MainButton from "../../components/utils/buttons/MainButton";
+import SecondaryButton from "../../components/utils/buttons/SecondaryButton";
+
 
 export default function Final(){
     return (
