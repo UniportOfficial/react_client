@@ -1,4 +1,5 @@
-import { ReactNode, useState, useEffect, useReducer, Dispatch, ChangeEventHandler } from 'react';
+import { useState, useEffect, useRef, useReducer, Dispatch } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
 
 // Components
@@ -91,7 +92,7 @@ function userinfoReducer(state: userinfoType, action: actionType) : userinfoType
 export default function Userinfo(){
     const [accepted, setAccepted] = useState(false);
     const [userinfo, updateUserinfo] = useReducer(userinfoReducer, initUserinfo)
-
+    
     useEffect(()=>{
         console.log(userinfo);
     }, [userinfo])
@@ -100,11 +101,20 @@ export default function Userinfo(){
 }
 
 function Survey({updateUserInfo}: {updateUserInfo: Dispatch<actionType>}){ 
+    const nextButtonEl = useRef(null);
+    const navigation = useNavigate();
+
     return (
         <Swiper
             className="h-screen"
             onReachEnd={()=>{
-
+                if (nextButtonEl.current !== null) {
+                    let concreteButton = nextButtonEl.current as HTMLElement;
+                    concreteButton.onclick = ()=>{navigation("/final")};
+                    concreteButton.innerText = "Done";
+                } else {
+                    throw new Error("Didn't create button.");
+                }
             }}
             pagination={{
                 el:".swiper-pagination"
@@ -269,7 +279,7 @@ in your passport.
                     placeholder="Address in your Home Country"
                 />
             </SwiperSlide>
-            <SlideNextButton></SlideNextButton>
+            <SlideNextButton nextButtonEl={nextButtonEl}/>
         </Swiper>
     )
 }
