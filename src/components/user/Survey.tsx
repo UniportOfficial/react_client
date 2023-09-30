@@ -1,24 +1,18 @@
-import { ReactNode, useState, useEffect, useReducer, ReducerAction, ReducerState, Dispatch } from 'react';
+import { ReactNode, useState, useEffect, useReducer, Dispatch, ChangeEventHandler } from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
+
+// Components
+import SlideNextButton from './survey/SlideNextButton';
+import SlidePrevButton from './survey/SlidePrevButton';
+import SlideCustom from './survey/SlideCustom';
+import SlideCalendar from './survey/SlideCalendar';
+import SlideSelect from './survey/SlideSelect';
 
 // Swiper Library
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/pagination';
 
-// Calendar Library
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-
-// fontawesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faArrowDown, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
 import './survey.css';
-import { Value } from 'react-calendar/dist/cjs/shared/types';
-
-// Countries Data
-// import * as countries from './country.json';
-const countries = require('./country.json')
 
 interface userinfoType {
     birth? : Date | null;
@@ -109,6 +103,9 @@ function Survey({updateUserInfo}: {updateUserInfo: Dispatch<actionType>}){
     return (
         <Swiper
             className="h-screen"
+            onReachEnd={()=>{
+
+            }}
             pagination={{
                 el:".swiper-pagination"
             }}
@@ -138,6 +135,12 @@ function Survey({updateUserInfo}: {updateUserInfo: Dispatch<actionType>}){
             </SwiperSlide>
             <SwiperSlide>
                 <SlideSelect
+                    selectHandler={(e)=>{
+                        updateUserInfo({
+                            type: "nationality", 
+                            userinfo: {nationality: e.currentTarget.value === null ? null : e.currentTarget.value}
+                        })
+                    }}
                     guide={
                         <div className="w-full text-lg font-bold text-center">
                             <p className="mb-4">Please select your <span className='text-main'>Nationality</span></p>
@@ -154,6 +157,12 @@ within the listed options.
             </SwiperSlide>
             <SwiperSlide>
                 <SlideCustom
+                    inputHandler={(e)=>{
+                        updateUserInfo({
+                            type: "passport_number", 
+                            userinfo: {passport_number: e.target.value}
+                        })
+                    }}
                     guide={
                         <div>
                             <div className="w-full text-lg font-bold text-center mb-4">
@@ -196,6 +205,12 @@ in your passport.
             </SwiperSlide>
             <SwiperSlide>
                 <SlideCustom
+                    inputHandler={(e)=>{
+                        updateUserInfo({
+                            type: "address_local", 
+                            userinfo: {address_local: e.target.value}
+                        })
+                    }}
                     guide={
                         <div className="mb-6">
                             <div className="w-full text-lg font-bold text-center mb-6">
@@ -212,6 +227,12 @@ in your passport.
             </SwiperSlide>
             <SwiperSlide>
                 <SlideCustom
+                    inputHandler={(e)=>{
+                        updateUserInfo({
+                            type: "phonenumber", 
+                            userinfo: {phonenumber: e.target.value}
+                        })
+                    }}
                     guide={
                         <div className="mb-6">
                             <div className="w-full text-lg font-bold text-center mb-6">
@@ -228,6 +249,12 @@ in your passport.
             </SwiperSlide>
             <SwiperSlide>
                 <SlideCustom
+                    inputHandler={(e)=>{
+                        updateUserInfo({
+                            type: "address_home_country", 
+                            userinfo: {address_home_country: e.target.value}
+                        })
+                    }}
                     guide={
                         <div className="mb-6">
                             <div className="w-full text-lg font-bold text-center mb-6">
@@ -247,63 +274,3 @@ in your passport.
     )
 }
 
-function SlideCustom({guide, placeholder, type}:{guide: ReactNode, placeholder: string, type?: string}){
-    return (
-        <div className="w-full h-full px-12 relative flex flex-col justify-center items-center">
-            {guide}
-            <div className="w-full">
-                <input 
-                    className="w-full text-sm px-8 border-black border-b-2 py-4" 
-                    placeholder={placeholder}
-                    type={type ? type : 'text'}
-                />
-            </div>
-        </div>
-    )
-}
-
-function SlideCalendar({guide, selectDate}:{guide: ReactNode, selectDate: (value:any, event:any)=>void}){
-    return (
-        <div className="w-full h-full mt-32 relative flex flex-col items-center">
-            {guide}
-            <Calendar locale="en" onChange={selectDate}/>
-        </div>
-    )
-}
-
-function SlideSelect({guide, placeholder}:{guide: ReactNode, placeholder: string}){
-    return(
-        <div className="w-full h-full px-12 relative flex flex-col justify-center items-center">
-            {guide}
-            <div className="w-full">
-                <select
-                    className="w-full text-sm px-8 border rounded-lg py-4" 
-                    placeholder={placeholder}
-                >
-                    {countries.map((country:any)=>{
-                        return (
-                            <option key={country.name} value={country.code}>{country.name}</option>
-                        )
-                    })}
-                </select>
-                <span className="absolute right-[18%] mt-4"><FontAwesomeIcon icon={faArrowDown}></FontAwesomeIcon></span>
-            </div>
-        </div>
-    )
-}
-
-function SlidePrevButton(){
-    return(
-        <div className="navigation-prev z-10">
-            <button className="text-white"><FontAwesomeIcon icon={faArrowLeft}/></button>
-        </div>
-    )
-}
-
-function SlideNextButton(){
-    return (
-        <div className="navigation-next absolute bottom-[5%] right-12 z-10">
-            <button>Next</button>
-        </div>
-    )
-}
