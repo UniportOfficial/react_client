@@ -89,7 +89,7 @@ function userinfoReducer(state: userinfoType, action: actionType) : userinfoType
     }
 }
 
-export default function Userinfo(){
+export default function Survey(){
     const [accepted, setAccepted] = useState(false);
     const [userinfo, updateUserinfo] = useReducer(userinfoReducer, initUserinfo)
     
@@ -97,10 +97,10 @@ export default function Userinfo(){
         console.log(userinfo);
     }, [userinfo])
 
-    return <Survey updateUserInfo={updateUserinfo}/>
+    return <Body updateUserInfo={updateUserinfo}/>
 }
 
-function Survey({updateUserInfo}: {updateUserInfo: Dispatch<actionType>}){ 
+function Body({updateUserInfo}: {updateUserInfo: Dispatch<actionType>}){ 
     const nextButtonEl = useRef(null);
     const navigation = useNavigate();
 

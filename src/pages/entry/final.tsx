@@ -1,8 +1,20 @@
 import MainButton from "../../components/utils/buttons/MainButton";
 import SecondaryButton from "../../components/utils/buttons/SecondaryButton";
 
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { toggleIsFirstUse } from "../../features/context";
+
 
 export default function Final(){
+    const navigation = useNavigate();
+    const dispatch = useDispatch();
+
+    const clickDoneButtonHandler = ()=>{
+        dispatch( toggleIsFirstUse() );
+        navigation('/');
+    }
+
     return (
         <main className="flex flex-col h-screen justify-evenly">
             <div className="w-full px-12 relative flex flex-col justify-center items-center">
@@ -22,7 +34,7 @@ export default function Final(){
                 <p className="mb-4">Want to learn more about Uniport?</p>
                 <div className="flex justify-evenly">
                     <SecondaryButton text='Maybe Later'/>
-                    <MainButton text='Yes, Please'/>
+                    <MainButton text='Yes, Please' clickHandler={clickDoneButtonHandler}/>
                 </div>
             </div>
         </main>
