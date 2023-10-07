@@ -8,7 +8,7 @@ export default function MainButton
 {
     return (
         <button 
-            className={`py-4 px-8 bg-black text-main rounded-xl font-semibold ${className}`}
+            className={`py-4 px-8 bg-black text-main rounded-xl font-semibold hover:bg-black/75 focus:bg-black/50 transition-colors  ${className}`}
             onClick={clickHandler}
         >
             {text}
