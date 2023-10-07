@@ -1,12 +1,17 @@
 import { ChangeEvent, ReactEventHandler, useState } from 'react';
-
 import { Link } from "react-router-dom";
+
+// context, user state
+import { useDispatch } from 'react-redux';
+import { setAccessToken, setUser } from '../features/user';
+
 import LoginGroup from "../components/user/LoginGroup";
 import { signin } from '../apis/auth';
 
 export default function Signin({setStateLogin}:{setStateLogin:Function}){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const changeUsername = (e: ChangeEvent<HTMLInputElement>)=>{
         setUsername(e.target.value);
@@ -19,7 +24,10 @@ export default function Signin({setStateLogin}:{setStateLogin:Function}){
     const submitSignin = async ()=>{
         try {
             const result = await signin(username, password);
+            dispatch( setAccessToken(result.accessToken) );
+            dispatch( setUser(result.user) );
             setStateLogin();
+
             console.log(result);
         } catch(err){
             console.log(err);
@@ -29,21 +37,28 @@ export default function Signin({setStateLogin}:{setStateLogin:Function}){
     return(
         <section className="px-8">
             <div className="brand-logo"><img src="logo.png"/></div>
-            <div className="input-group w-full my-6">
-                <input 
-                    className="w-full border border-black rounded-lg text-xs px-4 py-3"
-                    placeholder="E-mail"
-                    onChange={changeUsername}
-                    value={username}
-                />
-            </div>
-            <div className="input-group w-full">
-                <input
-                    className="w-full border border-black rounded-lg text-xs px-4 py-3"
-                    placeholder="Password"
-                    onChange={changePassword}
-                    value={password}
-                />
+            <div className="form"
+                onKeyDown={(e)=>{
+                    if (e.code === 'Enter') submitSignin();
+                }}
+            >
+                <div className="input-group w-full my-6">
+                    <input 
+                        className="w-full border border-black rounded-lg text-xs px-4 py-3"
+                        placeholder="E-mail"
+                        onChange={changeUsername}
+                        value={username}
+                    />
+                </div>
+                <div className="input-group w-full">
+                    <input
+                        className="w-full border border-black rounded-lg text-xs px-4 py-3"
+                        placeholder="Password"
+                        type="password"
+                        onChange={changePassword}
+                        value={password}
+                    />
+                </div>
             </div>
             <a className="block w-full text-sm text-center my-4 text-slate-300">Find your ID &  Password</a>
             <button 
