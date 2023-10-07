@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setAccessToken, setUser } from '../features/user';
 
 import LoginGroup from "../components/user/LoginGroup";
+import MainButton from '../components/utils/buttons/MainButton';
 import { signin } from '../apis/auth';
 
 export default function Signin({setStateLogin}:{setStateLogin:Function}){
@@ -61,12 +62,7 @@ export default function Signin({setStateLogin}:{setStateLogin:Function}){
                 </div>
             </div>
             <a className="block w-full text-sm text-center my-4 text-slate-300">Find your ID &  Password</a>
-            <button 
-                className="w-full py-3 rounded-md text-main font-semibold bg-black"
-                onClick={submitSignin}
-            >
-                Login
-            </button>
+            <MainButton className="w-full" text={"Login"} clickHandler={submitSignin} />
             <div className="notice-group flex flex-col justify-center items-center py-16">
                 <p className="">Don't have an account yet?</p>
                 <Link to='/signup' className="font-semibold">Sign up</Link>
