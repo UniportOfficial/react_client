@@ -13,8 +13,8 @@ import Register from './pages/entry/register';
 import Term from './pages/entry/term';
 import Final from './pages/entry/final';
 
-// services
 import Cellphone from './pages/service/cellphone';
+import CellphoneTerms from './pages/service/cellphone/terms';
 
 import Navigation from './components/service/Navigation';
 
@@ -59,7 +59,10 @@ function App() {
           <>
           <Routes>
             <Route path='/' element={<Main/>}/>
-            <Route path='/cellphone' element={<Cellphone/>}/>
+            <Route path='/cellphone'>
+                <Route path="" element={<Cellphone/>}/>
+                <Route path="/cellphone/term" element={<CellphoneTerms/>}/>
+            </Route>
             <Route path='*' element={<NotFound/>} />
           </Routes>
           <Navigation/>

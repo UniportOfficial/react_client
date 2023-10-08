@@ -1,9 +1,10 @@
 import BrandLogo from "../../components/service/BrandLogo";
+import Boundary from "../../components/utils/boundary";
 import MainLink from "../../components/utils/buttons/MainLink";
 
 export default function Cellphone(){
     return (
-        <main className="bg-black h-screen px-8 py-4 text-white">
+        <main className="bg-black h-full px-8 py-4 text-white">
             <BrandLogo/>
             <div className="catch-phrase font-bold">
                 <h1 className="text-xl text-main">Cellphone Service</h1>
@@ -28,9 +29,10 @@ export default function Cellphone(){
                         <p>Please follow our instructions to purchase</p>
                         <p>a prepaid sim card</p>
                     </div>
-                    <MainLink text='Get Started' to='/'/>
+                    <MainLink text='Get Started' to='/cellphone/term'/>
                 </div>
             </section>
+            <Boundary/>
         </main>
     )
 }

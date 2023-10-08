@@ -8,10 +8,11 @@ import ServiceButton from "../components/service/ServiceButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobileScreenButton, faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
+import Boundary from "../components/utils/boundary";
 
 export default function Service(){
     return(
-        <main className="bg-black h-screen text-white">
+        <main className="bg-black h-full text-white">
             <section className="px-8 py-4">
                 <div className="catch_phrase font-bold mb-4">
                     <p className="text-main text-xl">Three Steps</p>
@@ -37,7 +38,7 @@ export default function Service(){
                     </div>
                 </div>
             </section>
-            <div className="navgiation-wrapper mb-20"></div>
+            <Boundary/>
         </main>
     )
 }
