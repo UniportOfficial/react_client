@@ -13,7 +13,7 @@ export default function Navigation(){
         <nav className="nav-wrapper fixed left-0 bottom-0 w-full py-4 bg-teritary z-50 rounded-tl-3xl rounded-tr-3xl text-white">
             <ul className="w-full flex justify-evenly items-center">
                 <li className="text-center text-2xl">
-                    <Link to="/service"><FontAwesomeIcon icon={faHome}/></Link>
+                    <Link to="/"><FontAwesomeIcon icon={faHome}/></Link>
                 </li>
                 <li className="text-center text-2xl">
                     <button><FontAwesomeIcon icon={faCommentRegular}/></button>

@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
 
 // Components
-import SlideNextButton from './survey/SlideNextButton';
-import SlidePrevButton from './survey/SlidePrevButton';
-import SlideCustom from './survey/SlideCustom';
-import SlideCalendar from './survey/SlideCalendar';
-import SlideSelect from './survey/SlideSelect';
+import SlideNextButton from '../utils/slide/SlideNextButton';
+import SlidePrevButton from '../utils/slide/SlidePrevButton';
+import SlideInput from '../utils/slide/SlideInput';
+import SlideCalendar from '../utils/slide/SlideCalendar';
+import SlideSelect from '../utils/slide/SlideSelect';
 
 // Swiper Library
 import { Pagination, Navigation } from 'swiper/modules';
@@ -166,7 +166,7 @@ within the listed options.
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <SlideCustom
+                <SlideInput
                     inputHandler={(e)=>{
                         updateUserInfo({
                             type: "passport_number", 
@@ -214,7 +214,7 @@ in your passport.
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <SlideCustom
+                <SlideInput
                     inputHandler={(e)=>{
                         updateUserInfo({
                             type: "address_local", 
@@ -236,7 +236,7 @@ in your passport.
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <SlideCustom
+                <SlideInput
                     inputHandler={(e)=>{
                         updateUserInfo({
                             type: "phonenumber", 
@@ -258,7 +258,7 @@ in your passport.
                 />
             </SwiperSlide>
             <SwiperSlide>
-                <SlideCustom
+                <SlideInput
                     inputHandler={(e)=>{
                         updateUserInfo({
                             type: "address_home_country", 

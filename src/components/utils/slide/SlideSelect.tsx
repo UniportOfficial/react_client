@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown} from '@fortawesome/free-solid-svg-icons';
 
 // Countries Data
-const countries = require('../country.json')
+const countries = require('../../user/country.json');
 
 export default function SlideSelect
 (

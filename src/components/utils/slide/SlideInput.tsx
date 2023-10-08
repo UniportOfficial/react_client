@@ -1,6 +1,6 @@
 import { ReactNode, ChangeEventHandler } from "react";
 
-export default function SlideCustom(
+export default function SlideInput(
     {guide, placeholder, type, inputHandler} :
     {guide: ReactNode, placeholder: string, type?: string, inputHandler: ChangeEventHandler<HTMLInputElement>}){
     return (
