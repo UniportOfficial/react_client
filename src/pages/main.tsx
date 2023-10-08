@@ -2,26 +2,42 @@ import Navigation from "../components/service/Navigation";
 import IntroCarousel from '../components/service/IntroCarousel';
 import BrandLogo from "../components/service/BrandLogo";
 import ServiceCarousel from "../components/service/ServiceCarousel";
+import Search from "../components/service/Search";
+import ServiceButton from "../components/service/ServiceButton";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobileScreenButton, faBuildingColumns } from "@fortawesome/free-solid-svg-icons";
+import { faFile } from "@fortawesome/free-regular-svg-icons";
 
 export default function Service(){
     return(
-        <main>
+        <main className="bg-black h-screen text-white">
             <section className="px-8 py-4">
-                <BrandLogo></BrandLogo>
-                <div className="content-container py-2">
-                    <h1 className="text-2xl mb-2">A.B.C Package</h1>
-                    <div className="catchphrase text-xs text-slate-400 mb-2">
-                        <p>Everything you need when you first come to Korea!</p>
-                    </div>
+                <div className="catch_phrase font-bold mb-4">
+                    <p className="text-main text-xl">Three Steps</p>
+                    <p className="text-lg">to Settle in Kroea</p>
+                </div>
+                <div className="content-container py-2 mb-4">
                     <IntroCarousel className="mb-2"></IntroCarousel>
                 </div>
-                <div className="border-t-2 border-black mb-6"/>
+                <div className="search-container mb-8">
+                    <Search/>
+                </div>
                 <div className="service-container">
-                    <ServiceCarousel></ServiceCarousel>
+                    <div className="service-collections flex justify-between">
+                        <ServiceButton 
+                            name="Cellphone" icon={<FontAwesomeIcon icon={faMobileScreenButton}/>} to="/cellphone"
+                        />
+                        <ServiceButton 
+                            name="Banking" icon={<FontAwesomeIcon icon={faBuildingColumns}/>} to="/cellphone"
+                        />
+                        <ServiceButton 
+                            name="ARC" icon={<FontAwesomeIcon icon={faFile}/>} to="/cellphone"
+                        />
+                    </div>
                 </div>
             </section>
             <div className="navgiation-wrapper mb-20"></div>
-            <Navigation/>
         </main>
     )
 }

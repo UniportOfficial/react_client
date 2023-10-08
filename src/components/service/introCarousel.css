@@ -1,0 +1,11 @@
+.intro-carousel-pagination .swiper-pagination-bullet {
+    margin: 0 1px 0 1px;
+    background-color: #3A3E45;
+    width: 3rem;
+    border-radius: 1rem;
+    opacity: 100;
+}
+
+.intro-carousel-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #F8D57A;
+}

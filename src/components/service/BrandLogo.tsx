@@ -1,8 +1,7 @@
 export default function BrandLogo(){
     return(
-        <div className="brand-wrapper">
-            <h1 className="text-2xl">Uni-Port</h1>
-            <p className="text-sm text-slate-400">Uniting the World</p>
+        <div className="brand-wrapper relative w-[80px] h-[80px]">
+            <img className="absolute top-[50%] left-[30%] -translate-x-1/2 -translate-y-1/2" src='logo.png'/>
         </div>
     )
 } 

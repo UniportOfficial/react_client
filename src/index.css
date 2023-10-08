@@ -27,6 +27,7 @@ code {
 
   #root {
     width: 400px;
+    height: 100vh;
     position: relative;
   }
 }

@@ -10,7 +10,7 @@ import {
 
 export default function Navigation(){
     return(
-        <nav className="nav-wrapper fixed bottom-0 py-4 w-full border-t border-slate-100 bg-white z-50">
+        <nav className="nav-wrapper fixed left-0 bottom-0 w-full py-4 bg-teritary z-50 rounded-tl-3xl rounded-tr-3xl text-white">
             <ul className="w-full flex justify-evenly items-center">
                 <li className="text-center text-2xl">
                     <Link to="/service"><FontAwesomeIcon icon={faHome}/></Link>
@@ -18,9 +18,9 @@ export default function Navigation(){
                 <li className="text-center text-2xl">
                     <button><FontAwesomeIcon icon={faCommentRegular}/></button>
                 </li>
-                <li className="slider text-4xl text-slate-500">
-                    <button>
-                        <FontAwesomeIcon icon={faPlusSquare}/>
+                <li className="slider text-slate-500 text-main flex items-center">
+                    <button className="text-center text-main text-xl font-bold bg-black px-2 pb-1 rounded-lg">
+                        +
                     </button>
                 </li>
                 <li className="text-center text-2xl">

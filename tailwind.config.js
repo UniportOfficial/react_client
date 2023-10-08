@@ -9,7 +9,8 @@ module.exports = {
         black: '#232830',
         main: '#F8D57A',
         secondary: '#EEEEEE',
-        teritary: '#3A3E45'
+        teritary: '#3A3E45',
+        green: '#34A853'
       }
     },
   },
