@@ -39,6 +39,7 @@ export default function Service(){
                 </div>
             </section>
             <Boundary/>
+            <Navigation/>
         </main>
     )
 }
