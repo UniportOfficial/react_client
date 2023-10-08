@@ -13,11 +13,18 @@ import Register from './pages/entry/register';
 import Term from './pages/entry/term';
 import Final from './pages/entry/final';
 
+// services
+import Cellphone from './pages/service/cellphone';
+
+import Navigation from './components/service/Navigation';
+
 import LoadingPage from './components/LoadingPage';
+import NotFound from './pages/notfound';
+
 
 function App() {
   const [language, setLanguage] = useState('');
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState(true);
   const isFirstUse = useSelector((state : any)=>state.context.isFirstUse);
   const [isLoading, setLoading] = useState(false);
 
@@ -33,6 +40,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Signin setStateLogin={setStateLogin} />}/>
             <Route path='/signup' element={<Signup/>}/>
+            <Route path='*' element={<NotFound/>} />
           </Routes>
         </>
         :
@@ -44,12 +52,18 @@ function App() {
             <Route path='/term' element={<Term/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/final' element={<Final/>}/>
+            <Route path='*' element={<NotFound/>} />
           </Routes>
         }
         { !isFirstUse &&
+          <>
           <Routes>
             <Route path='/' element={<Main/>}/>
+            <Route path='/cellphone' element={<Cellphone/>}/>
+            <Route path='*' element={<NotFound/>} />
           </Routes>
+          <Navigation/>
+          </>
         }
         </>
       }
